@@ -1,0 +1,53 @@
+---
+title: "My_map"
+author: "Nicolas Castro"
+date: "9/8/2020"
+output: 
+html_document: 
+    keep_md: yes
+---
+
+## Description
+
+Cree una página web con R Markdown que aleja un mapa creado con Leaflet.
+
+Aloje su página web en gitHub Pages, RPubs o NeoCities.
+
+La página web debe contener la fecha en que creó el documento y debe contener un mapa creado con Leaflet. ¡Nos encantaría verte mostrar tu creatividad!
+
+##Date
+
+```{r}
+date()
+```
+
+## Creating data
+
+```{r}
+library("leaflet")
+My_university<-  leaflet() %>% 
+  addTiles()
+
+```
+
+##Adding custom markers
+
+```{r}
+library("leaflet")
+
+Unal_icon <- makeIcon(
+  iconUrl = "http://www.posgrados.unal.edu.co/tesis3minutos/images/logoUnall.png",
+  iconWidth = 200, iconHeight = 50,
+  iconAnchorX = 30, iconAnchorY = 30
+)
+```
+
+create the map
+
+```{r}
+library("leaflet")
+My_university<-  leaflet() %>% 
+  addTiles() %>% 
+addMarkers(lat=4.638743, lng=-74.085238, popup="My University",icon= Unal_icon) 
+My_university
+```
